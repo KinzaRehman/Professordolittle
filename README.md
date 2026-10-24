@@ -1,6 +1,4 @@
-# Star Wars Quotes
-
-A full-stack CRUD application built with Node.js, Express, MongoDB, and EJS. Users can create, read, update, and delete quotes through a simple web interface.
+# Professor Do Little
 
 ## 📸 Preview
 
@@ -80,7 +78,6 @@ CRUD/
 └── README.md
 ```
 
-*Project structure may vary depending on your setup.*
 
 ## 🔐 Security
 
@@ -94,16 +91,7 @@ This project uses environment variables to keep sensitive database credentials s
 
 ## 📚 What I Learned
 
-Through this project, I practiced:
 
-- Building REST-style routes with Express.js.
-- Handling HTTP GET, POST, PUT, and DELETE requests.
-- Connecting a Node.js application to MongoDB.
-- Performing CRUD operations on database documents.
-- Using EJS to render dynamic content.
-- Using Fetch API to communicate with backend routes.
-- Managing environment variables and protecting sensitive credentials.
 
 ## 📄 License
 
-Created as a learning project to practice full-stack web development and CRUD operations.
