@@ -1,17 +1,19 @@
 # Professor Do Little
+Professor do little is an express app allowing users to enter the university where they took the professors class, their name, their review, and rating out of 5 stars. They can also update the review and the rating for the professor. 
 
-## 📸 Preview
+### 📸 Preview
+(Live)["link"]
 
-![CRUD App Screenshot](/screenshot.png)
+![App Screenshot](/landing.png)
 
-## ✨ Features
+### ✨ Features
 
-- **Create:** Add new quotes with an author's name.
-- **Read:** Display quotes stored in MongoDB.
-- **Update:** Update an existing quote using the application interface.
-- **Delete:** Remove quotes from the database.
+- **Create:** Add the professors rating card. 
+- **Read:** Displays all ratings
+- **Update "Edit":** Update the review and the rating.
+- **Delete "X"** Remove whole review
 - **Persistent Storage:** Store quotes in MongoDB.
-- **Dynamic Rendering:** Display database content using EJS templates.
+
 
 ## 🛠️ Tech Stack
 
@@ -62,12 +64,10 @@ http://localhost:3000
 ## 📁 Project Structure
 
 ```text
-CRUD/
+Professordolittle/
 ├── public/
-│   ├── css/
-│   │   └── style.css
-│   └── js/
-│       └── main.js
+│   ├── style.css
+│   └── main.js
 ├── views/
 │   └── index.ejs
 ├── server.js
@@ -78,7 +78,6 @@ CRUD/
 └── README.md
 ```
 
-
 ## 🔐 Security
 
 This project uses environment variables to keep sensitive database credentials separate from the source code.
@@ -88,10 +87,3 @@ This project uses environment variables to keep sensitive database credentials s
 - `.env.example` provides a safe configuration template.
 - Database credentials are never intentionally exposed to frontend JavaScript.
 - Each developer must provide their own MongoDB connection string.
-
-## 📚 What I Learned
-
-
-
-## 📄 License
-

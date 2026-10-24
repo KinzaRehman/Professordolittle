@@ -41,8 +41,7 @@
                         <p>⭐ <%= review.stars %>/5</p>
 
                         <button class="update-button" data-id="<%= review._id %>">Edit</button>
-                        <button class="delete-button" data-id="<%= review._id %>">Delete</button>
-                    </li>
+<button class="delete-button" data-id="<%= review._id %>" aria-label="Delete review">×</button>                    </li>
                 <% }) %>
             </ul>
         </section>

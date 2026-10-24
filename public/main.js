@@ -1,31 +1,40 @@
-const deleteButton = document.querySelector('#delete-button')
-const messageDiv = document.querySelector('#message')
+//target my buttons and add funtionality based on the index ejs selectorALll becuase everything has its own delete or update 
+const deleteButton = document.querySelectorAll('.delete-button')
+const updateButton = document.querySelectorAll('.update-button')
 
-console.log('Delete button found:', deleteButton)
 
-deleteButton.addEventListener('click', () => {
-    console.log('Delete button clicked!')
+//console.log('Delete button found:', deleteButton)
+// each card/ user input has a delete button , if user clicks it then it should delete the card with the professors infromation/ rating 
+deleteButton.forEach(button => {
+    button.addEventListener('click', () => {
+        const id = button.dataset.id
 
-    fetch('/quotes', {
-        method: 'DELETE',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-            name: 'Darth Vader'
-        })
+        fetch(`/reviews/${id}`, { method: 'DELETE' })
+            .then(res => res.json())
+            .then(() => window.location.reload())
+            .catch(error => console.error(error))
     })
-        .then(res => {
-            console.log('Server status:', res.status)
-            if (!res.ok) throw new Error('Delete request failed')
-            return res.json()
-        })
-        .then(response => {
-            console.log('Server response:', response)
+})
 
-            if (response === 'No quote to delete') {
-                messageDiv.textContent = 'No Darth Vader quote to delete'
-            } else {
-                window.location.reload()
-            }
+// when user wants to update information they click update then they can the reviews and the stars 
+updateButton.forEach(button => {
+    button.addEventListener('click', () => {
+        const id = button.dataset.id
+        const review = prompt('Your updated review: ')
+        if (review === null) return
+        const stars = prompt('your new rating (1-5): ')
+        if (stars === null) return
+
+        fetch(`/reviews/${id}`, {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                review,
+                stars: Number(stars)
+            })
         })
-        .catch(error => console.error(error))
+            .then(res => res.json())
+            .then(() => window.location.reload())
+            .catch(error => console.error(error))
+    })
 })

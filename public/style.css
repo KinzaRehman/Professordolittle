@@ -1,229 +1,182 @@
 
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap');
-
 * {
     box-sizing: border-box;
+    margin: 0;
+    padding: 0; 
 }
 
 body {
-    margin: 0;
+ 
     padding: 40px 20px;
-    min-height: 100vh;
-    background: radial-gradient(ellipse at top, #1c2947, #080c18 70%);
-    color: #f4f4f5;
-    font-family: 'Inter', sans-serif;
-    text-align: center;
+    background: #f5f5f5;
+    color: #222;
+    font-family: Arial, sans-serif;
 }
 
-h1, h2 {
-    font-family: 'Orbitron', sans-serif;
-}
-
+/* Header */
 h1 {
-    color: #ffe81f;
-    font-size: clamp(1.6rem, 4vw, 2.5rem);
-    text-shadow: 0 0 18px rgba(255, 232, 31, 0.35);
-    margin-bottom: 40px;
+    text-align: center;
+    color: #243b67;
+    font-size: 32px;
+    margin-bottom: 10px;
 }
 
-h2 {
-    font-size: 1.2rem;
-    color: #ffe81f;
-    margin-bottom: 15px;
+body > p {
+    text-align: center;
+    color: #555;
+    margin-bottom: 8px;
 }
 
-p {
-    color: #aab6ca;
-    line-height: 1.7;
-    margin-bottom: 20px;
-}
-
-/* MAIN LAYOUT */
 main {
-    max-width: 1200px;
+    max-width: 1000px;
     margin: 0 auto;
 }
 
-/* TOP THREE CARDS */
-.actions-grid {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 20px;
-    align-items: stretch;
-    margin-bottom: 40px;
+/* Add Review */
+main > form {
+    background: white;
+    max-width: 550px;
+    margin: 0 auto 40px;
+    padding: 5px;
+    border: 1px solid whitesmoke;
+    border-radius: 8px;
 }
 
-.actions-grid > form,
-.actions-grid > .action-card {
-    margin: 0;
-    padding: 30px;
-    background: rgba(24, 33, 54, 0.95);
-    border: 1px solid #34425c;
-    border-radius: 16px;
-    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.25);
-
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
+h2 {
+    color: #243b67;
+    font-size: 22px;
+    margin-bottom: 5px;
 }
 
-.actions-grid h2 {
-    min-height: 50px;
-}
-
-.actions-grid p {
-    flex-grow: 1;
-}
-
-/* INPUT FIELDS */
-input {
+/* Form Inputs */
+input, textarea, select {
+    display: block;
     width: 100%;
-    padding: 14px 16px;
+    padding: 10px;
     margin-bottom: 12px;
-    border: 1px solid #43516b;
-    border-radius: 8px;
-    background: #0c1426;
-    color: white;
-    font-family: inherit;
-    font-size: 15px;
-    outline: none;
-}
-
-input:focus {
-    border-color: #ffe81f;
-    box-shadow: 0 0 0 3px rgba(255, 232, 31, 0.12);
-}
-
-/* BUTTONS */
-button {
-    padding: 13px 24px;
-    border: none;
-    border-radius: 8px;
-    font-family: 'Inter', sans-serif;
-    font-weight: 600;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-family: Arial, sans-serif;
     font-size: 14px;
+}
+
+textarea {
+    height: 100px;
+}
+
+/* Buttons */
+button {
+    padding: 10px 15px;
+    border: 1 px solid whitesmoke;
+    border-radius: 5px;
     cursor: pointer;
-    transition: transform 0.2s, box-shadow 0.2s;
+    font-size: 14px;
 }
 
-button:hover {
-    transform: translateY(-2px);
-}
-
-button:active {
-    transform: scale(0.98);
-}
-
-.actions-grid button {
-    width: 100%;
-    margin-top: auto;
-}
-
-/* CREATE BUTTON */
 button[type="submit"] {
-    background: #ffe81f;
-    color: #111827;
+    background: #243b67;
+    color: white;
+    width: 100%;
 }
 
 button[type="submit"]:hover {
-    box-shadow: 0 0 18px rgba(255, 232, 31, 0.4);
+    background: #36558a;
 }
 
-/* UPDATE BUTTON */
-#update-button {
-    background: #3b82f6;
-    color: white;
-}
-
-#update-button:hover {
-    box-shadow: 0 0 18px rgba(59, 130, 246, 0.4);
-}
-
-/* DELETE BUTTON */
-#delete-button {
-    background: #ef4444;
-    color: white;
-}
-
-#delete-button:hover {
-    box-shadow: 0 0 18px rgba(239, 68, 68, 0.4);
-}
-
-/* SAVED QUOTES SECTION */
+/* Reviews */
 .quotes-section {
-    width: 100%;
-    text-align: left;
+    margin-top: 30px;
 }
 
 .quotes-section h2 {
-    text-align: center;
-    margin-bottom: 25px;
+    margin-bottom: 20px;
 }
 
 .quotes-section ul {
-    width: 100%;
-    padding: 0;
-    margin: 0;
-    list-style: none;
-
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(5, 1fr);
     gap: 15px;
+    list-style: none;
 }
 
-/* INDIVIDUAL QUOTE CARDS */
+/* Each Review */
 .quotes-section li {
-    background: #172139;
-    padding: 18px 20px;
-    border: 1px solid #34425c;
-    border-left: 4px solid #ffe81f;
-    border-radius: 10px;
-    line-height: 1.7;
+    background: white;
+    border: 1px solid whitesmoke;
+    border-radius: 6px;
+    padding: 15px;
+}
+
+.quotes-section h3 {
+    color: #243b67;
+    font-size: 18px;
+    margin: 0 0 8px;
+}
+
+.quotes-section li p {
+    font-size: 14px;
+    line-height: 1.5;
+    margin: 8px 0;
     overflow-wrap: anywhere;
 }
 
-.quotes-section li strong {
-    color: #ffe81f;
+.quotes-section li p:first-of-type {
+    color: #555;
+    font-weight: bold;
 }
 
-/* STATUS MESSAGE */
-#message {
-    margin: 15px 0 0;
-    padding: 0;
-    color: #fca5a5;
-    font-size: 14px;
-    font-weight: 600;
-    text-align: center;
+.quotes-section li p:last-of-type {
+    color: #c58b00;
+    font-weight: bold;
 }
 
-#message:empty {
-    display: none;
+/* Edit and Delete */
+.update-button {
+    background: #dbeafe;
+    color: dark blue;
 }
 
-/* TABLET */
-@media (max-width: 900px) {
-    .actions-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+.update-button:hover {
+    background: rgb(172, 226, 220);
+}
+.quotes-section li {
+    position: relative;
+}
+
+.delete-button {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: none;
+    border: none;
+    color: #888;
+    font-size: 20px;
+    padding: 0 5px;
+    cursor: pointer;
+}
+
+.delete-button:hover {
+    color: red;
+}
+
+.quotes-section li button {
+    margin-top: 10px;
+    margin-right: 5px;
+}
+
+/* Smaller Screens */
+@media (max-width: 800px) {
+    .quotes-section ul {
+        grid-template-columns: repeat(2, 1fr);
     }
 }
 
-/* MOBILE */
-@media (max-width: 600px) {
-    body {
-        padding: 25px 15px;
-    }
-
-    .actions-grid,
+@media (max-width: 500px) {
     .quotes-section ul {
         grid-template-columns: 1fr;
     }
 
-    .actions-grid > form,
-    .actions-grid > .action-card {
-        padding: 22px 18px;
-    }
-
-    button {
-        width: 100%;
+    main > form {
+        padding: 15px;
     }
 }
