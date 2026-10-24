@@ -33,36 +33,66 @@ client.connect()
     .then(() => {
         console.log('Connected to Database')
 
-        const db = client.db('star-war-quotes')
-        const quotesCollection = db.collection('quotes')
+        const db = client.db('professor-do-little')
+        const reviewsCollection = db.collection('reviews')
 
-        // GET - Retrieve quotes and render EJS
+        // GET - we make and get professor reviews
         app.get('/', (req, res) => {
             quotesCollection
                 .find()
                 .toArray()
                 .then(results => {
-                    console.log('Quotes from MongoDB:', results)
-                    res.render('index.ejs', { quotes: results })
+                    console.log('Professor Reviews:', results)
+                    res.render('index.ejs', { reviews: results })
                 })
                 .catch(error => {
                     console.error(error)
-                    res.status(500).send('Error retrieving quotes')
+                    res.status(500).send('Error retrieving reviews')
                 })
         })
 
         // POST - Save quotes to MongoDB
-        app.post('/quotes', (req, res) => {
+        client.connect()
+    .then(() => {
+        console.log('Connected to Database')
+
+        const db = client.db('professor-do-little')
+        const reviewsCollection = db.collection('reviews')
+
+        // GET - Retrieve professor reviews
+        app.get('/', (req, res) => {
+            reviewsCollection
+                .find()
+                .toArray()
+                .then(results => {
+                    console.log('Professor Reviews:', results)
+                    res.render('index.ejs', { reviews: results })
+                })
+                .catch(error => {
+                    console.error(error)
+                    res.status(500).send('Error retrieving reviews')
+                })
+        })
+
+        // POST - Save professor reviews to MongoDB
+        app.post('/reviews', (req, res) => {
             console.log(req.body)
 
-            quotesCollection.insertOne(req.body)
+            const review = {
+                university: req.body.university,
+                professor: req.body.professor,
+                review: req.body.review,
+                stars: Number(req.body.stars)
+            }
+
+            reviewsCollection.insertOne(review)
                 .then(result => {
-                    console.log('Saved to MongoDB:', result)
+                    console.log('Saved Review!', result)
                     res.redirect('/')
                 })
                 .catch(error => {
                     console.error(error)
-                    res.status(500).send('Error saving quote')
+                    res.status(500).send('Error saving the review')
                 })
         })
         // PUT - Replace Yoda's quote with Darth Vader's quote

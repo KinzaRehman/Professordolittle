@@ -1,49 +1,47 @@
-<!-- index.ejs -->
+<!--Index ejs, contains what the user will see on load -->
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Star Wars Quote App</title>
+<head>
+    <meta charset="UTF-8">
+    <title>Professor Do Little </title>
     <link rel="stylesheet" href="/style.css">
-  </head>
-
+</head>
 <body>
-    <h1>May Node and Express be with you.</h1>
+    <h1>Professor Do Little. </h1>
+    <p> Rate your professors and share your experience,</p>
+    
+
 
     <main>
-        <section class="actions-grid">
-            <!-- CREATE -->
-            <form action="/quotes" method="POST">
-                <h2>Add a Quote</h2>
-                <input type="text" placeholder="Name" name="name" />
-                <input type="text" placeholder="Quote" name="quote" />
-                <button type="submit">Submit</button>
-            </form>
+        <!-- CREATE -->
+        <form action="/reviews" method="POST">
+            <h2>Add a Review</h2>
+            <input name="university" placeholder="University">
+            <input name="professor" placeholder="Professor">
+            <textarea name="review" placeholder="Your review"></textarea>
 
-            <!-- UPDATE -->
-            <div class="action-card">
-                <h2>Darth Vader Invades</h2>
-                <p>Replace Yoda's first quote with Darth Vader's quote.</p>
-                <button id="update-button">Replace Yoda's Quote</button>
-            </div>
+            <select name="stars">
+                <% for(let i = 1; i <= 5; i++) { %>
+                    <option value="<%= i %>"><%= i %> Stars</option>
+                <% } %>
+            </select>
 
-            <!-- DELETE -->
-            <div class="action-card">
-                <h2>Remove Darth Vader!</h2>
-                <p>Delete one Darth Vader quote.</p>
-                <button id="delete-button">Delete Darth Vader's Quote</button>
-                <div id="message"></div>
-            </div>
-        </section>
+            <button type="submit">Submit Review</button>
+        </form>
 
-        <!-- READ -->
+        <!-- rud, read the forum and allow user to update the ratings and stuff-->
         <section class="quotes-section">
-            <h2>Saved Quotes</h2>
+            <h2>Professor Reviews</h2>
             <ul>
-                <% quotes.forEach(quote => { %>
+                <% reviews.forEach(review => { %>
                     <li>
-                        <strong><%= quote.name %></strong>:
-                        <%= quote.quote %>
+                        <h3><%= review.professor %></h3>
+                        <p><%= review.university %></p>
+                        <p><%= review.review %></p>
+                        <p>⭐ <%= review.stars %>/5</p>
+
+                        <button class="update-button" data-id="<%= review._id %>">Edit</button>
+                        <button class="delete-button" data-id="<%= review._id %>">Delete</button>
                     </li>
                 <% }) %>
             </ul>
@@ -52,3 +50,4 @@
 
     <script src="/main.js"></script>
 </body>
+</html>
