@@ -2,7 +2,7 @@
 Professor do little is an express app allowing users to enter the university where they took the professors class, their name, their review, and rating out of 5 stars. They can also update the review and the rating for the professor. 
 
 ### 📸 Preview
-(Live)["link"]
+[Live](https://professordolittle.onrender.com/)
 
 ![App Screenshot](/landing.png)
 
